@@ -10,7 +10,7 @@ This assembles a Docker container combining all the many dependencies of the [SM
 - RabbitMQ (used to pass messages between microservices with queueing)
 - ~~Redis (some data caching)~~
 - Java Runtime Environment (to run the [NER](https://nlp.stanford.edu/software/CRF-NER.shtml) and [CTP](http://mircwiki.rsna.org/index.php?title=MIRC_CTP) tools)
-- Microsoft 5.0 SDK
+- Microsoft dotnet 5.0 SDK
 
 The daemons above are all run under the supervision of the included `smiinit` tool, which reads a YAML configuration file telling it which commands to run; if any exits unexpectedly, it is automatically restarted to maintain service uptime. Upon receiving a `SIGTERM` signal, each worker process is sent the same signal to allow a graceful shutdown, followed by `SIGKILL` 3 seconds later.
 
