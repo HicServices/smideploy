@@ -4,13 +4,13 @@ Deployment tooling for the SMI image processing pipeline.
 
 This assembles a Docker container combining all the many dependencies of the [SMI Services](https://github.com/SMI/SmiServices), plus the services themselves and the RDMP command line tool:
 
-- Microsoft SQL Server (used by [RDMP](https://github.com/HicServices/RDMP) to hold 'management' data about the pipeline itself)
-- MySQL (which holds the actual relational database tables with image metadata)
+- ~~Microsoft SQL Server (used by [RDMP](https://github.com/HicServices/RDMP) to hold 'management' data about the pipeline itself)~~
+- ~~MySQL (which holds the actual relational database tables with image metadata)~~
 - MongoDB (holding all the extracted DICOM tag values)
 - RabbitMQ (used to pass messages between microservices with queueing)
-- Redis (some data caching)
+- ~~Redis (some data caching)~~
 - Java Runtime Environment (to run the [NER](https://nlp.stanford.edu/software/CRF-NER.shtml) and [CTP](http://mircwiki.rsna.org/index.php?title=MIRC_CTP) tools)
-- Microsoft .Net 2.2 runtime, still required for now by the RDMP command line tool used to initialise the management database
+- Microsoft 5.0 SDK
 
 The daemons above are all run under the supervision of the included `smiinit` tool, which reads a YAML configuration file telling it which commands to run; if any exits unexpectedly, it is automatically restarted to maintain service uptime. Upon receiving a `SIGTERM` signal, each worker process is sent the same signal to allow a graceful shutdown, followed by `SIGKILL` 3 seconds later.
 
