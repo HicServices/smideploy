@@ -1,4 +1,4 @@
-SMIV	:= v3.0.2
+SMIV	:= v5.2.0
 
 JARS	:= ctpanonymiser-1.0.0/CTPAnonymiser-portable-1.0.0.jar smi-nerd-$(SMIV).jar
 BINS	:=	smiinit
